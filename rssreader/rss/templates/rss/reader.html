@@ -1,0 +1,28 @@
+{% extends 'rss/base.html' %}
+
+{% block body %}
+<h1>The Daily Django</h1>
+<form action="" method="get">
+    <input type="text" placeholder="RSS feed URL" name="url">
+    <button type="submit">Go</button>
+ </form>
+{% if feed %}
+<h2>{{ feed.feed.title }}</h2>
+
+{% if feed.items %}
+
+{% for item in feed.items %}
+<div>
+   <p>
+       {{ item.published }}
+       <a href="{{ item.link }}">{{ item.title }}</a> 
+       {{ item.author }}
+   </p>
+</div>
+{% endfor %}
+
+{% endif %}
+{% else %}
+<p>Enter your favorite RSS feed above.</p>
+{% endif %}
+{% endblock %}
