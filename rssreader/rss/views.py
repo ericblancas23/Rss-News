@@ -24,7 +24,7 @@ def rest_feeds(request):
         return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
-def rest_feed_detail(request, pk):
+def rest_feeds_detail(request, pk):
     try:
         feed = Feed.objects.get(pk=pk)
     except Feed.DoesNotExist:
@@ -69,6 +69,4 @@ def index(request):
    else:
        feed = None
 
-   return render(request, 'rss/reader.html', {
-       'feed': feed
-   })
+   return render(request, 'rss/reader.html')

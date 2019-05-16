@@ -33,7 +33,7 @@ class RssRestFeedsViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(feed["url"], url)
 
-    def test_update_feeds(self):
+    def test_update_feed(self):
         url = "https://www.djangoproject.com/rss/weblog/"
         new_url = "https://utan.io/?feed=rss2"
         Feed.objects.create(
@@ -54,7 +54,7 @@ class RssRestFeedsViewTests(TestCase):
             ["<Feed '{}'>".format(new_url)]
         )
 
-    def test_delete_feeds(self):
+    def test_delete_feed(self):
         Feed.objects.create(
                 url="https://www.djangoproject.com/rss/weblog/"
             )
